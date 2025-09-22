@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 
+
 function Temoignages() {
   const temoignages = [
     {
@@ -91,6 +92,7 @@ function Temoignages() {
           </motion.div>
         ))}
       </motion.div>
+      
     </div>
   );
 }

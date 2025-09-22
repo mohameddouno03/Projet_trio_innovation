@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-800 mb-5 text-white shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-800 mb-20  text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <h1 className="text-2xl font-bold">TRIOINNOV</h1>
+          <h1 className="text-3xl font-bold text-[#2BC0E4]">TRIOINNOV</h1>
 
           {/* Liens de navigation + boutons regroupés */}
           <div className="flex items-center space-x-4">
@@ -16,6 +16,11 @@ function Navbar() {
               <li>
                 <Link to="/" className="hover:text-gray-300 transition">
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/apropos" className="hover:text-gray-300 transition">
+                  Apropos
                 </Link>
               </li>
               <li>

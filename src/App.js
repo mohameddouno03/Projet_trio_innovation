@@ -1,39 +1,98 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Fonctionnalité from "./Pages/Fonctionnalité";
 import Apercus from "./Pages/Aperçus";
-import Temoingnages from "./Pages/Temoingnages";
+import Temoignages from "./Pages/Temoingnages";
 import Contact from "./Pages/Contact";
+import FAQ from "./Pages/FAQ";
+import Apropos from "./Pages/Apropos";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
 
+function Layout({ children }) {
+  const location = useLocation();
 
-// Exemple simple de page Home
-function HomePage() {
+  // Pages sans Navbar/Footer
+  const noNavFooter = ["/login", "/signup"];
+
+  const showNavFooter = !noNavFooter.includes(location.pathname);
+
   return (
-    <div className="text-center mt-20 text-3xl font-bold text-white">
-      Bienvenue sur TRIOINNOV 🚀
-    </div>
+    <>
+      {showNavFooter && <Navbar />}
+      <main>{children}</main>
+      {showNavFooter && <Footer />}
+    </>
   );
 }
 
 function App() {
   return (
     <Router>
-      <div>
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/fonctionnalite" element={<Fonctionnalité />} />
-          <Route path="/aperçu" element={<Apercus />} />
-          <Route path="/temoingnages" element={<Temoingnages />} />
-          <Route path="/contact" element={<Contact />} />
-
-
-
-          
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/apropos"
+          element={
+            <Layout>
+              <Apropos />
+            </Layout>
+          }
+        />
+        <Route
+          path="/fonctionnalite"
+          element={
+            <Layout>
+              <Fonctionnalité />
+            </Layout>
+          }
+        />
+        <Route
+          path="/aperçu"
+          element={
+            <Layout>
+              <Apercus />
+            </Layout>
+          }
+        />
+        <Route
+          path="/temoingnages"
+          element={
+            <Layout>
+              <Temoignages />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Layout>
+              <Contact />
+            </Layout>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <Layout>
+              <FAQ />
+            </Layout>
+          }
+        />
+        {/* Pages sans Navbar/Footer */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </Router>
   );
 }

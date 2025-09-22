@@ -3,6 +3,7 @@ import { Lightbulb, Settings, TrendingUp } from "lucide-react";
 import Navbar from "../Components/Navbar";
 import { motion } from "framer-motion"; // ⚡ Import Framer Motion
 
+
 function Fonctionnalité() {
   // Variants pour l'animation des cartes
   const cardVariants = {
@@ -12,7 +13,7 @@ function Fonctionnalité() {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50">
       {/* Navbar en haut */}
       <Navbar />
 
@@ -90,7 +91,9 @@ function Fonctionnalité() {
           </motion.div>
         </div>
       </div>
+       
     </div>
+    
   );
 }
 

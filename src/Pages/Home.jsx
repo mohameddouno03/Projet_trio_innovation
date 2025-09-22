@@ -9,6 +9,9 @@ import Fonctionnalité from "./Fonctionnalité";
 import Aperçus from "./Aperçus";
 import Temoignages from "./Temoingnages";
 import Contact from "./Contact";
+import FAQ from "./FAQ";
+import Apropos from "./Apropos";
+
 
 function Home() {
   const slides = [
@@ -31,7 +34,7 @@ function Home() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000 }}
         loop={true}
-        className="w-full h-screen"
+        className="w-full h-screen "
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
@@ -43,7 +46,7 @@ function Home() {
               />
               {/* Overlay texte */}
               <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black/40 px-4 text-center">
-                <h2 className="text-4xl md:text-5xl  font-bold">{slide.title}</h2>
+                <h2 className="text-4xl md:text-4xl  font-bold text-blue-600">{slide.title}</h2>
                 <p className="mt-4 text-lg md:text-xl max-w-3xl">{slide.description}</p>
               </div>
             </div>
@@ -52,11 +55,15 @@ function Home() {
       </Swiper>
 
       {/* Section fonctionnalités */}
-      <div className="mt-16">
+      <div className="mt-12">
+        <Apropos />
         <Fonctionnalité />
         <Aperçus />
         <Temoignages/>
         <Contact/>
+        <FAQ/>
+    
+
 
 
 

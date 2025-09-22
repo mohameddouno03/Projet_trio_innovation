@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin, Github } from "lucide-react";
 import Navbar from "../Components/Navbar";
+
 
 function Contact() {
   const infos = [
@@ -15,7 +16,7 @@ function Contact() {
       id: 2,
       icon: <Phone className="w-8 h-8 text-green-500" />,
       title: "Téléphone",
-      value: "+224 620903982",
+      value: "+224 620 00 00 00",
     },
     {
       id: 3,
@@ -26,7 +27,7 @@ function Contact() {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-100 min-h-screen flex flex-col">
       {/* Navbar */}
       <Navbar />
 
@@ -38,15 +39,14 @@ function Contact() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl font-bold text-gray-800 mt-10">Contactez-nous</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mt-7">Contactez-nous</h2>
         <p className="mt-2 text-gray-600">
           Une question ? Un projet ? Notre équipe est à votre écoute.
         </p>
       </motion.div>
 
       {/* Contenu */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 py-10">
-        
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 py-10 flex-1">
         {/* Formulaire */}
         <motion.form
           className="bg-white shadow-lg rounded-lg p-8 space-y-6"
@@ -109,8 +109,29 @@ function Contact() {
               </div>
             </motion.div>
           ))}
+
+          {/* Réseaux sociaux */}
+          <motion.div
+            className="flex justify-center mt-6 space-x-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+              <Facebook className="w-6 h-6 text-blue-600 hover:text-blue-800 transition" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+              <Linkedin className="w-6 h-6 text-blue-500 hover:text-blue-700 transition" />
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+              <Github className="w-6 h-6 text-gray-800 hover:text-gray-600 transition" />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
+
+      
     </div>
   );
 }
