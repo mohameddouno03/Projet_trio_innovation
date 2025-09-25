@@ -14,6 +14,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("USER"); // 🎯 Champ role ajouté
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,13 +30,13 @@ function Signup() {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8081/api/auth/register", {
+      const response = await axios.post("http://localhost:8081/auth/register", {
         username,
         email,
         password,
+        role, // 🎯 On envoie le role au backend
       });
 
-      // si tout OK
       setLoading(false);
       navigate("/login");
     } catch (err) {
@@ -49,7 +50,6 @@ function Signup() {
 
   return (
     <div className="min-h-screen bg-gray-800 flex items-center justify-center p-4">
-      {/* Home icon */}
       <div className="absolute top-5 left-5">
         <Link to="/" aria-label="Accueil">
           <AiOutlineHome size={30} className="text-sky-500 hover:text-sky-700 transition" />
@@ -118,6 +118,19 @@ function Signup() {
               className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
               required
             />
+          </div>
+
+          {/* Role */}
+          <div className="relative">
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full pl-4 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400"
+              required
+            >
+              <option value="USER">Utilisateur</option>
+              <option value="ADMIN">Administrateur</option>
+            </select>
           </div>
 
           <button

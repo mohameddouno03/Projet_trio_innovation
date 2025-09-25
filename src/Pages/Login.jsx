@@ -21,7 +21,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8081/api/auth/login", {
+      const response = await axios.post("http://localhost:8081/auth/login", {
         email,
         password,
       });
@@ -32,7 +32,7 @@ function Login() {
       }
 
       setLoading(false);
-      navigate("/template"); // redirige vers home (ou dashboard)
+      navigate("/dashboard"); // redirige vers home (ou dashboard)
     } catch (err) {
       setLoading(false);
       setError(
